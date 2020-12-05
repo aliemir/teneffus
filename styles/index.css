@@ -2,6 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+html,
 body {
-  @apply bg-blue-500 p-12;
+  @apply h-full;
+}
+
+body {
+  @apply overflow-hidden bg-gradient-to-r from-purple-400 via-pink-400 to-red-500 p-6 sm:p-12 md:p-16 lg:p-24 flex justify-center items-center;
+}
+
+#__next {
+  @apply w-full;
+}
+
+* {
+  font-family: 'Nunito', sans-serif !important;
+}
+
+@media (min-width: 768px) {
+  .md\:text-10xl {
+    font-size: 10rem !important;
+    line-height: 1;
+  }
 }
