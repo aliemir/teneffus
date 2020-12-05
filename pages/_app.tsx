@@ -13,7 +13,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         />
         <meta
           property='og:image'
-          content='https://teneffus.app/social-share.jpg'
+          content='https://teneffus.app/social-share.png'
         />
         <link rel='preconnect' href='https://fonts.gstatic.com' />
         <link
