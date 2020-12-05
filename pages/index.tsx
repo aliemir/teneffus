@@ -138,6 +138,9 @@ const Home = () => {
           <Settings onClick={onSettings} />
         </div>
       </div>
+      <div className='text-center my-3 text-gray-200 text-sm hover:text-gray-50'>
+        <a href='mailto:bilgi@teneffus.app'>bilgi@teneffus.app</a>
+      </div>
       <SettingsModal
         visible={settingsVisible}
         defaultMinutes={duration / 60}
