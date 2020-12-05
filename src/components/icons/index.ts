@@ -1,0 +1,5 @@
+export { Pause as PauseIcon } from './pause'
+export { Play as PlayIcon } from './play'
+export { Reset as ResetIcon } from './reset'
+export { Ring as RingIcon } from './ring'
+export { Settings as SettingsIcon } from './settings'
