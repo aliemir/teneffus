@@ -58,7 +58,7 @@ export const SettingsModal = ({ defaultMinutes, onSave, onClose, visible }) => {
           <button
             type='button'
             onClick={decrement}
-            className='select-none inline-flex items-center justify-center px-1 py-1 border border-transparent rounded-md text-7xl font-bold text-center text-red-400 w-14 h-14 bg-pink-100 hover:bg-red-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-400'
+            className='select-none leading-3 inline-flex items-center justify-center px-1 py-1 border border-transparent rounded-md text-7xl font-bold text-center text-red-400 w-14 h-14 bg-pink-100 hover:bg-red-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-400'
           >
             -
           </button>
@@ -68,7 +68,7 @@ export const SettingsModal = ({ defaultMinutes, onSave, onClose, visible }) => {
           <button
             type='button'
             onClick={increment}
-            className='select-none inline-flex items-center justify-center px-1 py-1 border border-transparent rounded-md text-6xl font-bold text-center text-red-400 w-14 h-14 bg-pink-100 hover:bg-red-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-400'
+            className='select-none leading-3 inline-flex items-center justify-center px-1 py-1 border border-transparent rounded-md text-6xl font-bold text-center text-red-400 w-14 h-14 bg-pink-100 hover:bg-red-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-400'
           >
             +
           </button>
