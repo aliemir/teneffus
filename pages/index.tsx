@@ -1,17 +1,25 @@
-import Head from 'next/head'
 import React from 'react'
-import { Start, Reset, Ring, Settings, SettingsModal } from '../src/components'
 import {
-  getStoreDuration,
+  SettingsModal,
+  Button,
+  Head,
+  PauseIcon,
+  PlayIcon,
+  ResetIcon,
+  RingIcon,
+  SettingsIcon,
+} from '../src/components'
+import {
+  Colors,
   minutes,
   seconds,
-  setStoreDuration,
+  storage,
   useInterval,
 } from '../src/definitions'
 
 const Home = () => {
-  const [duration, setDuration] = React.useState(() => getStoreDuration())
-  const [timeLeft, setTimeLeft] = React.useState(() => getStoreDuration())
+  const [duration, setDuration] = React.useState(() => storage.get())
+  const [timeLeft, setTimeLeft] = React.useState(() => storage.get())
   const [title, setTitle] = React.useState('Ders Zamanlayıcı - teneffus.app')
   const audioRef = React.useRef<HTMLAudioElement>()
   const [active, setActive] = React.useState(false)
@@ -23,8 +31,7 @@ const Home = () => {
     if (!active) {
       setTimeLeft(minute * 60)
     }
-    console.log(minute)
-    setStoreDuration(minute)
+    storage.set(minute)
   }
 
   const playSound = () => {
@@ -92,33 +99,7 @@ const Home = () => {
 
   return (
     <>
-      <Head>
-        <title>{title}</title>
-        {active && (
-          <link
-            rel='icon'
-            type='image/png'
-            sizes='32x32'
-            href='/favicon-active.png'
-          />
-        )}
-        {!active && !soundActive && (
-          <link
-            rel='icon'
-            type='image/png'
-            sizes='32x32'
-            href='/favicon-idle.png'
-          />
-        )}
-        {!active && soundActive && (
-          <link
-            rel='icon'
-            type='image/png'
-            sizes='32x32'
-            href='/favicon-done.png'
-          />
-        )}
-      </Head>
+      <Head title={title} active={active} soundActive={soundActive} />
       <div className='bg-white p-6 shadow-xl rounded-2xl max-w-screen-sm mx-auto'>
         <h1 className='text-purple-500 text-3xl font-black text-center pb-4'>
           Ders Zamanlayıcı
@@ -129,13 +110,37 @@ const Home = () => {
           {seconds(timeLeft)}
         </div>
         <div className='grid gap-3 grid-cols-8'>
-          <Start active={active} onClick={active ? onPause : onStart} />
-          <Reset onClick={onReset} />
-          <Ring
-            active={soundActive}
+          <Button
+            onClick={active ? onPause : onStart}
+            color={Colors.purple}
+            span={4}
+          >
+            {!active ? (
+              <PlayIcon className='mr-2' />
+            ) : (
+              <PauseIcon className='mr-2' />
+            )}
+            {!active ? 'Başlat' : 'Durdur'}
+          </Button>
+          <Button onClick={onReset} color={Colors.pink} span={4}>
+            <ResetIcon className='mr-2' />
+            {'Sıfırla'}
+          </Button>
+          <Button
             onClick={!soundActive ? playSound : stopSound}
-          />
-          <Settings onClick={onSettings} />
+            color={Colors.red}
+            span={6}
+          >
+            <RingIcon className='mr-2' />
+            Zili&nbsp;
+            {!soundActive && (
+              <span className='hidden sm:inline'>Hemen&nbsp;</span>
+            )}
+            {soundActive ? 'Durdur' : 'Çal'}
+          </Button>
+          <Button onClick={onSettings} color={Colors.white} span={2}>
+            <SettingsIcon />
+          </Button>
         </div>
       </div>
       <div className='text-center my-3 text-gray-200 text-sm hover:text-gray-50'>

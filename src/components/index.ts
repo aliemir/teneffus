@@ -1,5 +1,4 @@
-export { SettingsButton as Settings } from './settingsbutton'
-export { StartButton as Start } from './startbutton'
-export { ResetButton as Reset } from './resetbutton'
-export { RingButton as Ring } from './ringbutton'
 export { SettingsModal } from './modal'
+export { Button } from './button'
+export { Head } from './head'
+export * from './icons'
