@@ -1,13 +1,20 @@
-import React, { DetailedHTMLProps, HTMLAttributes } from 'react'
-import { getStoreDuration } from '../../definitions'
+import React from 'react'
+import { Button } from '..'
+import { Colors } from '../../definitions'
 
 interface ModalProps {
+  visible: boolean
   onSave: (minutes: number) => void
-  onClose: (minutes: number) => void
+  onClose: () => void
   defaultMinutes: number
 }
 
-export const SettingsModal = ({ defaultMinutes, onSave, onClose, visible }) => {
+export const SettingsModal: React.FC<ModalProps> = ({
+  defaultMinutes,
+  onSave,
+  onClose,
+  visible,
+}) => {
   const [minutes, setMinutes] = React.useState<number>(defaultMinutes)
 
   const increment = (event: React.MouseEvent) => {
@@ -77,20 +84,22 @@ export const SettingsModal = ({ defaultMinutes, onSave, onClose, visible }) => {
           dakika
         </div>
         <div className='grid grid-cols-2 gap-4'>
-          <button
-            type='button'
+          <Button
             onClick={save}
-            className='justify-center col-span-2 sm:col-span-1 inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-lg font-bold text-white bg-red-500 hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-600'
+            color={Colors.red}
+            span={2}
+            className='justify-center'
           >
             Kaydet
-          </button>
-          <button
-            type='button'
+          </Button>
+          <Button
             onClick={close}
-            className='justify-center col-span-2 sm:col-span-1 inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-lg font-bold text-red-600 bg-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-600'
+            color={Colors.white}
+            span={2}
+            className='justify-center'
           >
             Geri Dön
-          </button>
+          </Button>
         </div>
       </div>
     </div>
